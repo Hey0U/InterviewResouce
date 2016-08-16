@@ -1,0 +1,56 @@
+单元测试技巧：
+解决bash: ./gradlew: Permission denied异常，非本地生成就会报该错
+解决方案：先输入命令chmod +x gradlew，再输入./gradlew createDebugCoverageReport
+(执行构建任务需要首先更改gradlew脚本的权限，然后才能执行该脚本)
+tip：输入命令前检查用户是否登陆，若接口与登陆相关，未登陆可能导致crash
+
+网页查看对应的报告输入相应的本地路径名称即可
+
+
+
+volley配置及实现实例：
+配置：在gradle中添加    compile 'com.android.volley:volley:1.0.0'
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+final CountDownLatch signal = new CountDownLatch(1);
+
+        RequestQueue volley = Volley.newRequestQueue(BaseApp.getApp().getApplicationContext());
+        volley.start();
+//        volley.add()
+        JSONObject json = new JSONObject();
+
+        try{
+            json.put("phoneNumber","15906652167");
+            json.put("type","1");
+            json.put("deviceid","SU1FST04NjA5ODIwMzA4MDQ0ODZ8VkVSU0lPTj0yLjkuMHxTTkFNRT3kuK3lm73np7vliqh8REVWSUNFPVBFLVRMMjB8T1NWRVJTSU9OPTQuNC4y");
+            json.put("moduleCode","Button0019");
+            json.put("behaviorInfo","TkVUVFlQRT1XSUZJ");
+            Log.e("sssssssss","aaaaaaaaaaaaaaa");
+        }catch(Exception e){
+            Log.e("sssssssss","bbbbbbbbbbbbbb");
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://183.131.13.104:8443/CloudHealth/mobile/common/user/user!findPassword.action", json,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("sssssssss","cccccccccccccccc");
+                        signal.countDown();
+                        assertEquals(1,2);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("sssssssss","ddddddddddddddd");
+                signal.countDown();
+                assertEquals(1, 3);
+
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(
+                new DefaultRetryPolicy(5 * 1000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        volley.add(jsonObjectRequest);
+        signal.await();
+
+
+————————————————————————————————————————-
