@@ -52,5 +52,3 @@ final CountDownLatch signal = new CountDownLatch(1);
         volley.add(jsonObjectRequest);
         signal.await();
 
-
-————————————————————————————————————————-
