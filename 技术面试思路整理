@@ -1,0 +1,7 @@
+1.ANDROID:一些基础概念与技术原理，比如Activity、View、Window的理解，各 LaunchMode的使用场景，View的绘制流程，Touch事件机制，
+Android动画的原理，Handler,Looper的理解，Android跨进程通讯的方式，Binder的理解，Android Mashup设计的理解等等。
+2.JAVA:基本上就是Effective Java那本书里提到的东西，如果你背完那本书里的问题，并且对答如流，没问题，就要你这样的。
+其实也会考察关于final用法，反射原理，注解原理，java编译过程，GC等一些常见问题
+3.IT基础知识:比如不少人都不知道http的get post有啥区别，https的那个s是什么意思，讲不清进程与线程的概念，不知道二分算法是个啥东西。
+4.代码质量的认识：看下《Clean Code》《代码整洁之道》
+5.技术视野，根据以往的原理经验做出技术想象力，相关的高效技术习惯，面试亮点（建议主动要求自己擅长部分）
